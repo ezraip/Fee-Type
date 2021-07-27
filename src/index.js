@@ -6,7 +6,13 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App
+      // author={{
+      //   avatarUrl: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRGNens_IGL9MqtOmRCvPhC2fbq4Mkra_OQNjT_L88N2TyviO0g',
+      //   name: 'ezra'
+      // }}
+      // text={'ini text'}
+    />
   </React.StrictMode>,
   document.getElementById('root')
 );
