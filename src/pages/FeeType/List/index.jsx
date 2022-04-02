@@ -1,10 +1,15 @@
 import { useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Breadcrumb } from "../../../components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import DataTable from "react-data-table-component";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { filePlus } from "../../../assets";
+import { data } from "./data";
 
 export default function List() {
+  const history = useHistory();
+
   const CustomDescription = ({ row }) => (
     <div>
       <div>{row.description}</div>
@@ -24,15 +29,42 @@ export default function List() {
 
   const CustomAction = ({ row }) => (
     <div className="d-flex justify-content-around">
-      <Link className="datatable-button" to={`/fee-type/${row.id}`}>
-        <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
-      </Link>
-      <button className="datatable-button">
-        <FontAwesomeIcon icon="fa-solid fa-eye" />
-      </button>
-      <button className="datatable-button">
-        <FontAwesomeIcon icon="fa-solid fa-trash-can" />
-      </button>
+      <OverlayTrigger
+        placement="top"
+        overlay={<Tooltip id="tooltip-top">Click to edit</Tooltip>}
+      >
+        <button
+          className="datatable-btn"
+          onClick={() =>
+            history.push({
+              pathname: `/fee-type/${row.id}`,
+              state: {
+                feeTypeCode: row.id,
+                feeTypeName: row.name,
+                description: row.description,
+              },
+            })
+          }
+        >
+          <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
+        </button>
+      </OverlayTrigger>
+      <OverlayTrigger
+        placement="top"
+        overlay={<Tooltip id="tooltip-top">Click to view details</Tooltip>}
+      >
+        <button className="datatable-btn">
+          <FontAwesomeIcon icon="fa-solid fa-eye" />
+        </button>
+      </OverlayTrigger>
+      <OverlayTrigger
+        placement="top"
+        overlay={<Tooltip id="tooltip-top">Click to delete</Tooltip>}
+      >
+        <button className="datatable-btn">
+          <FontAwesomeIcon icon="fa-solid fa-trash-can" />
+        </button>
+      </OverlayTrigger>
     </div>
   );
 
@@ -70,111 +102,51 @@ export default function List() {
     []
   );
 
-  const data = [
-    {
-      id: 1,
-      code: "1",
-      name: "Service Fee",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum. Etiam euismod nunc vel justo pretium, et pulvinar dolor malesuada.",
-      status: "active",
-      action: "1988",
-    },
-    {
-      id: 2,
-      code: "2",
-      name: "Reissue Fee",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum.",
-      status: "active",
-      action: "1988",
-    },
-    {
-      id: 3,
-      code: "3",
-      name: "Cancellation Fee",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum.",
-      status: "active",
-      action: "1988",
-    },
-    {
-      id: 4,
-      code: "4",
-      name: "Refund Fee",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum.",
-      status: "active",
-      action: "1988",
-    },
-    {
-      id: 5,
-      code: "5",
-      name: "MDR Fee",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum.",
-      status: "active",
-      action: "1988",
-    },
-    {
-      id: 6,
-      code: "6",
-      name: "After Office Charge",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum.",
-      status: "active",
-      action: "1988",
-    },
-    {
-      id: 7,
-      code: "7",
-      name: "Late Payment",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum.",
-      status: "active",
-      action: "1988",
-    },
-    {
-      id: 8,
-      code: "8",
-      name: "Domestic Flight Service Fee",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum.",
-      status: "active",
-      action: "1988",
-    },
-    {
-      id: 9,
-      code: "9",
-      name: "International Flight Service Fee",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum.",
-      status: "active",
-      action: "1988",
-    },
-    {
-      id: 10,
-      code: "10",
-      name: "Domestic Hotel Service Fee",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin turpis vel enim efficitur interdum.",
-      status: "active",
-      action: "1988",
-    },
-  ];
-
   // const handleButtonClick = () => {
   //   alert("clicked");
   // };
 
   return (
-    <div className="content">
+    <div className="content container-2xl">
       <Breadcrumb
         firstContent={{ name: "Master Data Management", link: "#" }}
         content={[{ name: "Fee Type", link: false }]}
       />
       <div style={{ marginTop: "10px", marginBottom: "30px" }}>
         <h4>Fee Type</h4>
+      </div>
+      <div className="filter-datatable d-flex align-items-center justify-content-between">
+        <div className="search-datatable">
+          <input type="text" placeholder="Search..." />
+        </div>
+        <div className="">
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip id="tooltip-top">Click to download</Tooltip>}
+          >
+            <button className="download-btn">
+              <FontAwesomeIcon icon="fa-solid fa-download" />
+            </button>
+          </OverlayTrigger>
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip id="tooltip-top">Click to print</Tooltip>}
+          >
+            <button className="print-btn">
+              <FontAwesomeIcon icon="fa-solid fa-print" />
+            </button>
+          </OverlayTrigger>
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip id="tooltip-top">Click to create</Tooltip>}
+          >
+            <Link className="btn create-btn" to={"/fee-type/create"}>
+              <img src={filePlus} alt="File Plus" />
+              {"  "}
+              <span>Create New</span>
+            </Link>
+          </OverlayTrigger>
+        </div>
       </div>
       <DataTable
         columns={columns}

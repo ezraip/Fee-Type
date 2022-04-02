@@ -45,6 +45,7 @@ function App() {
             <FeeTyoeEdit />
           </Route>
         </Switch>
+        <div className="footer">© 2020 Bayu Buana Travel Services. All Rights Reserved.</div>
       </div>
     </Router>
   );

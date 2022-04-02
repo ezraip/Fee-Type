@@ -1,28 +1,20 @@
-import { Card, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Card, Row, Button } from "react-bootstrap";
 import { Breadcrumb } from "../../../components";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import Board from "./Board";
 
-const initialValues = {
-  feeTypeName: "",
-  description: "",
-  feeTypeCode: "",
-};
-
-const onSubmit = (values) => {
-  console.log(values);
-};
-
-const validationSchema = Yup.object({
-  feeTypeName: Yup.string().required("Required"),
-  description: Yup.string().required("Required"),
-  feeTypeCode: Yup.string().required("Required"),
-});
-
-export default function Form() {
+export default function Form({
+  initialValues = {
+    feeTypeName: "",
+    description: "",
+    feeTypeCode: "",
+  },
+  onSubmit,
+  validationSchema,
+}) {
   return (
-    <div className="content">
+    <div className="content container-2xl">
       <Breadcrumb
         firstContent={{ name: "Master Data Management", link: "#" }}
         content={[
@@ -33,19 +25,23 @@ export default function Form() {
       <div style={{ marginTop: "10px", marginBottom: "30px" }}>
         <h2>Edit Fee Type</h2>
       </div>
-      <Card className="fee-type-card card-shadow">
-        <Row>
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={onSubmit}
-          >
-            <FormikForm>
+      <Row>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        >
+          <FormikForm>
+            <Card className="fee-type-card card-shadow">
               <Board Field={Field} ErrorMessage={ErrorMessage} />
-            </FormikForm>
-          </Formik>
-        </Row>
-      </Card>
+            </Card>
+            <div className="mt-3">
+              <Button className="save-btn" type="submit">Save</Button>
+              <Button as={Link} to={'/fee-type'} className="cancel-btn">Cancel</Button>
+            </div>
+          </FormikForm>
+        </Formik>
+      </Row>
     </div>
   );
 }
