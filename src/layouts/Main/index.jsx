@@ -4,16 +4,11 @@ import { Link } from "react-router-dom";
 import { logo } from "../../assets";
 import {
   Container,
-  Dropdown,
-  DropdownButton,
-  Nav,
   Navbar,
-  NavDropdown,
 } from "react-bootstrap";
-import ContentItem from "./ContentItem";
+// import ContentItem from "./ContentItem";
 
 export default function MainLayout({ appName, sidenav, children }) {
-  // console.log(sidenav.items);
   const [inactive, setInactive] = useState(true);
   const [expand, setExpand] = useState(false);
 

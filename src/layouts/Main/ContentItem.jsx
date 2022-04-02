@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 
-const ContentItem = (props) => {
+export const ContentItem = (props) => {
   const { icon, label, items } = props;
   return (
     <li>
@@ -28,3 +28,4 @@ const ContentItem = (props) => {
     </li>
   );
 };
+

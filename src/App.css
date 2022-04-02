@@ -102,4 +102,37 @@
 .app-container {
   margin-top: 115px;
   margin-left: 104px;
+  margin-right: 25px;
+}
+
+.rdt_TableCol {
+  background-color: #5E5E5E;
+  color: #FAFAFA
+}
+
+.datatable-button {
+  background-color: transparent;
+  border: none;
+  color: #3A3FB2;
+}
+
+.breadcrumb-item.active {
+  color: #E84D0E;
+}
+
+.breadcrumb-item a {
+  text-decoration: none !important;
+  color: #818181;
+}
+
+.breadcrumb-item + .breadcrumb-item::before{
+  content:var(--bs-breadcrumb-divider,">") !important;
+}
+
+.fee-type-card {
+  padding: 29px 26px 24px 35px;
+}
+
+.card-shadow {
+  box-shadow: 0px 3px 6px #00000029;
 }
