@@ -1,11 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 import { MainLayout } from "./layouts";
 import { sidenav } from "./data";
-// import { mainRoutes } from "./routes";
+import { mainRoutes } from "./routes";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FeeTypeList, FeeTypeCreate, FeeTyoeEdit } from "./pages";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -17,21 +21,23 @@ library.add(fas);
 //   </MainLayout>
 // );
 
-const Dashboard = () => {
-  return <h1>Dashboard</h1>;
-};
-
 function App() {
   return (
     <Router>
       <MainLayout sidenav={sidenav} />
       <div className="app-container">
         <Switch>
-          {/* {mainRoutes.map(({ component, path, exact }) => (
-          <Route exact={exact} key={path} path={path}>
-            {component}
+          <Route exact path="/">
+            <Redirect to="/fee-type" />
           </Route>
-        ))} */}
+          {mainRoutes.map(({ component, path, exact }) => (
+            <Route exact={exact} key={path} path={path}>
+              {component}
+            </Route>
+          ))}
+          {/* <Route exact path="/">
+            <Redirect to="/fee-type" />
+          </Route>
           <Route exact path={"/dashboard"}>
             <Dashboard />
           </Route>
@@ -43,9 +49,11 @@ function App() {
           </Route>
           <Route exact path={"/fee-type/:id"}>
             <FeeTyoeEdit />
-          </Route>
+          </Route> */}
         </Switch>
-        <div className="footer">© 2020 Bayu Buana Travel Services. All Rights Reserved.</div>
+        <div className="footer">
+          © 2020 Bayu Buana Travel Services. All Rights Reserved.
+        </div>
       </div>
     </Router>
   );

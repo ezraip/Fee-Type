@@ -8,7 +8,7 @@ export default function Board({ Field, ErrorMessage }) {
         <Col>
           <Form.Group as={Row} className="mb-3">
             <Form.Label column lg={4}>
-              Fee Type Name
+              Fee Type Name<span className="form-required">*</span>
             </Form.Label>
             <Col lg={8}>
               <Field
@@ -64,7 +64,8 @@ export default function Board({ Field, ErrorMessage }) {
             <h3>For Interface Purpose</h3>
             <Form.Group as={Row} className="mb-3">
               <Form.Label column lg={6}>
-                Fee Type Name
+                Fee Type Name<span className="form-required">*</span>
+                <FontAwesomeIcon icon="fa-thin fa-circle-info" />
               </Form.Label>
               <Col lg={6}>
                 <Field

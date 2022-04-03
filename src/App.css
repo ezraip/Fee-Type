@@ -105,6 +105,12 @@ body {
   font-size: 20px;
 }
 
+.navbar-btn {
+  background-color: transparent;
+  border: none;
+  margin: 0px 5px;
+}
+
 .app-container {
   margin-top: 115px;
   margin-left: 104px;
@@ -213,8 +219,13 @@ body {
   font-size: 25px;
 }
 
+.form-required {
+  color: #FF0000;
+}
+
 .download-btn,
-.print-btn {
+.print-btn,
+.refresh-btn {
   border: 0px;
   border-radius: 100%;
   padding: 8px;
@@ -281,6 +292,15 @@ body {
   border-radius: 8px;
 }
 
+.content {
+  margin-bottom: 50px;
+}
+
+.content .filter-datatable .search-datatable {
+  width: 100%;
+  max-width: 250px;
+}
+
 .content .filter-datatable .search-datatable input[type=text] {
   border: 1px solid #D9DFE7;
   outline: none;
@@ -291,6 +311,20 @@ body {
   width: 100%;
   max-width: 250px;
   padding: 0 15px;
+}
+
+.advanced-option-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.advanced-option-collapse {
+  border: 1px solid #C7CDD6D9;
+  border-radius: 8px;
+  background-color: #F5F7F9;
+  padding: 14px 32px 42px 32px;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 5px #3C46531A;
 }
 
 .translation-card {

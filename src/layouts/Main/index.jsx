@@ -2,10 +2,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { logo } from "../../assets";
-import {
-  Container,
-  Navbar,
-} from "react-bootstrap";
+import { Container, Image, Navbar } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import ContentItem from "./ContentItem";
 
 export default function MainLayout({ appName, sidenav, children }) {
@@ -16,7 +14,8 @@ export default function MainLayout({ appName, sidenav, children }) {
     <div className="d-flex">
       <div
         className={`side-menu side-index ${inactive ? "inactive" : ""}`}
-        onMouseOver={() => setInactive(!inactive)}
+        onMouseEnter={() => setInactive(false)}
+        onMouseLeave={() => setInactive(true)}
       >
         <div className="main-menu">
           {/* <div>{appName}</div> */}
@@ -81,13 +80,29 @@ export default function MainLayout({ appName, sidenav, children }) {
             <Container>
               <Navbar.Brand>
                 <img
-                  alt="Logo Metrodata Academy"
+                  alt="Logo"
                   src={logo}
                   height={44}
                   className="align-top d-inline-block"
                 />
               </Navbar.Brand>
             </Container>
+            <div className="d-flex" style={{ fontSize: "20px" }}>
+              <button className="navbar-btn">
+                <FontAwesomeIcon icon="fa-solid fa-circle-question" />
+              </button>
+              <button className="navbar-btn">
+                <FontAwesomeIcon icon="fa-solid fa-bell" />
+              </button>
+              <button className="navbar-btn">
+                <Image
+                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                  width={40}
+                  height={40}
+                  style={{ borderRadius: 20, objectFit: "cover" }}
+                ></Image>
+              </button>
+            </div>
           </Navbar>
         </Container>
       </main>
