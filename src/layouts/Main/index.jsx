@@ -62,7 +62,7 @@ export default function MainLayout({ appName, sidenav, children }) {
         <Container>
           <Navbar fixed="top" expand="lg" variant="light" bg="light">
             <Container className="navbar-brand-position justify-content-between">
-              <Navbar.Brand>
+              <Navbar.Brand as={Link} to={"/dashboard"}>
                 <img
                   alt="Logo"
                   src={logo}
@@ -71,7 +71,10 @@ export default function MainLayout({ appName, sidenav, children }) {
                 />
               </Navbar.Brand>
             </Container>
-            <div className="d-flex" style={{ fontSize: "20px", marginRight: '28px' }}>
+            <div
+              className="d-flex"
+              style={{ fontSize: "20px", marginRight: "28px" }}
+            >
               <button className="navbar-btn">
                 <FontAwesomeIcon icon="fa-solid fa-circle-question" />
               </button>
