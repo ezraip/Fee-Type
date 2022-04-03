@@ -1,6 +1,17 @@
 import { FeeTypeList, FeeTypeCreate, FeeTyoeEdit } from "./pages";
 
+const Dashboard = () => {
+  return <h1>Dashboard</h1>;
+};
+
+
 export const mainRoutes = [
+  {
+    title: "Dashboard",
+    component: <Dashboard />,
+    path: "/dashboard",
+    exact: true,
+  },
   {
     title: "Fee Type",
     component: <FeeTypeList />,

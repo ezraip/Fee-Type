@@ -105,6 +105,14 @@ body {
   font-size: 20px;
 }
 
+.navbar {
+  max-height: 92px;
+}
+
+.navbar-brand-position {
+  margin-left: 104px;
+}
+
 .navbar-btn {
   background-color: transparent;
   border: none;

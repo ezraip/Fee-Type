@@ -21,55 +21,39 @@ export default function MainLayout({ appName, sidenav, children }) {
           {/* <div>{appName}</div> */}
           <ul>
             {sidenav.items.map(({ label, href, icon, items }) => (
-              <>
-                {/* {items ? ( */}
-                <li key={href}>
-                  <Link
-                    className="menu-item"
-                    to={href || "/"}
-                    onClick={() => setExpand(!expand)}
-                  >
-                    <div className="menu-icon">{icon}</div>
-                    <span className="menu-label">{label}</span>
-                  </Link>
-                  {items && items.length > 0 ? (
-                    <>
-                      {items.map((subitem, i) => (
-                        <ul
-                          className={`sub-menu ${expand ? "active" : ""}`}
-                          key={i}
-                        >
-                          <li>
-                            <Link
-                              className="menu-label"
-                              to={subitem.href}
-                              style={{
-                                textDecoration: "none",
-                                color: "#FFFFFF",
-                              }}
-                            >
-                              <span>{subitem.label}</span>
-                            </Link>
-                          </li>
-                        </ul>
-                      ))}
-                    </>
-                  ) : null}
-                </li>
-                {/* ) : (
-                  <li>
-                    <a
-                      as={Link}
-                      className="menu-item"
-                      key={href}
-                      to={href || "/"}
-                    >
-                      <div className="menu-icon">{icon}</div>
-                      <span>{label}</span>
-                    </a>
-                  </li>
-                )} */}
-              </>
+              <li key={href}>
+                <Link
+                  className="menu-item"
+                  to={href || "/"}
+                  onClick={() => setExpand(!expand)}
+                >
+                  <div className="menu-icon">{icon}</div>
+                  <span className="menu-label">{label}</span>
+                </Link>
+                {items && items.length > 0 ? (
+                  <>
+                    {items.map((subitem, i) => (
+                      <ul
+                        className={`sub-menu ${expand ? "active" : ""}`}
+                        key={i}
+                      >
+                        <li>
+                          <Link
+                            className="menu-label"
+                            to={subitem.href}
+                            style={{
+                              textDecoration: "none",
+                              color: "#FFFFFF",
+                            }}
+                          >
+                            <span>{subitem.label}</span>
+                          </Link>
+                        </li>
+                      </ul>
+                    ))}
+                  </>
+                ) : null}
+              </li>
             ))}
           </ul>
         </div>
@@ -77,7 +61,7 @@ export default function MainLayout({ appName, sidenav, children }) {
       <main className="d-flex main-index" style={{ willChange: "width" }}>
         <Container>
           <Navbar fixed="top" expand="lg" variant="light" bg="light">
-            <Container>
+            <Container className="navbar-brand-position justify-content-between">
               <Navbar.Brand>
                 <img
                   alt="Logo"
@@ -87,7 +71,7 @@ export default function MainLayout({ appName, sidenav, children }) {
                 />
               </Navbar.Brand>
             </Container>
-            <div className="d-flex" style={{ fontSize: "20px" }}>
+            <div className="d-flex" style={{ fontSize: "20px", marginRight: '28px' }}>
               <button className="navbar-btn">
                 <FontAwesomeIcon icon="fa-solid fa-circle-question" />
               </button>
